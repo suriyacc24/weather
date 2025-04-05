@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Checker</title>
+</head>
+<body id="bg" style="background-image: url('https://images.pexels.com/photos/158827/field-corn-air-frisch-158827.jpeg?auto=compress&cs=tinysrgb&w=600');background-repeat: no-repeat; background-size:1500px 650px" >
+    <h1><center><b> Weather Checker </b></center></h1>
+    <form method="get">
+        <center>
+        <input type="text" name="city" placeholder="Enter city" required>
+        <button type="submit">Check Weather</button>
+        </center>
+        
+    </form>
+
+    {% if weather_data %}
+        <h2>Weather in {{ weather_data.name }}</h2>
+        <p>Temperature: {{ weather_data.main.temp }}°C</p>
+        <p>Condition: {{ weather_data.weather.0.description }}</p>
+        <p>Humidity: {{ weather_data.main.humidity }}%</p>
+        <p>Wind Speed: {{ weather_data.wind.speed }} m/s</p>
+    {% elif weather_data is not none %}
+        <p>City not found. Please try again!</p>
+    {% endif %}
+    
+</body>
+</html>
